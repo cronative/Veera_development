@@ -1,0 +1,21 @@
+name = "vera-app"
+main = "src/index.ts"
+compatibility_date = "2024-11-01"
+upload_source_maps = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "vera-app"
+database_id = "5b5ca09a-1fa3-4b68-851b-da8d5196b96d"
+
+[ai]
+binding = "AI"
+
+[observability]
+enabled = true
+
+[vars]
+CANVAS_API_TOKEN = "7~2BBARQ7GCYzW27kHQxn4htYuNnk6hwn68V6e3ffFA9uuKGGry4PAKrYQKrKAhT49"
+CANVAS_API_URL = "https://canvas.instructure.com/api/v1"
+SUPABASE_URL = "https://prsisvnraelrhiqnltju.supabase.co"
+SUPABASE_SERVICE_ROLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InByc2lzdm5yYWVscmhpcW5sdGp1Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0ODA0NjcyNywiZXhwIjoyMDYzNjIyNzI3fQ.3e1jaovZ_RxL5sIt457OdSYGBI4qfUVGRx07qw1Plkk"

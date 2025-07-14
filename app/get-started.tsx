@@ -1,11 +1,12 @@
 import Button from '@/components/ui/Button';
 import { COLORS, FONTS, SIZES } from '@/constants/theme';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useRouter } from 'expo-router';
 import React from 'react';
 import {
   View,
   Text,
   StyleSheet,
-  TouchableOpacity,
   Dimensions,
   Image,
   ImageSourcePropType,
@@ -25,6 +26,13 @@ const BackgroundBlob: React.FC<BackgroundBlobProps> = ({ source, style }) => (
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
 const GetStartedScreen: React.FC = () => {
+  const router = useRouter();
+
+  const handleGetStarted = async () => {
+    await AsyncStorage.setItem('hasSeenIntro', 'true');
+    // router.push('/index'); // goes back to index to apply logic (e.g., login/signup redirect)
+  };
+
   return (
     <View style={styles.container}>
       {/* Yellow Blob - Top Left */}
@@ -35,7 +43,7 @@ const GetStartedScreen: React.FC = () => {
           width: SCREEN_WIDTH * 1.3, // 130% width for oversize effect
           height: SCREEN_HEIGHT * 0.4,
           top: 0,
-          left: -SCREEN_WIDTH * 0.35,
+          left: '-40%',
         }}
       />
 
@@ -47,7 +55,7 @@ const GetStartedScreen: React.FC = () => {
           width: SCREEN_WIDTH * 0.8,
           height: SCREEN_HEIGHT * 0.4,
           bottom: SCREEN_HEIGHT * 0.38,
-          right: -SCREEN_WIDTH * 0.1,
+          right: '-10%',
         }}
       />
 
@@ -79,7 +87,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.white,
     justifyContent: 'flex-end',
-    paddingBottom: SCREEN_HEIGHT * 0.15
+    paddingBottom: SCREEN_HEIGHT < 700 ? SCREEN_HEIGHT * 0.06 : SCREEN_HEIGHT * 0.11
   },
   content: {
     alignItems: 'center',
@@ -87,24 +95,24 @@ const styles = StyleSheet.create({
     paddingBottom: SIZES.spacing_40,
   },
   welcome: {
-    ...FONTS.regular,
+    ...FONTS.darkerGrotesqueRegular,
     fontSize: SIZES.xxxxl,
     textAlign: 'center',
     color: COLORS.black,
-    marginBottom: SIZES.spacing_8,
+    marginBottom: SIZES.spacing_4,
   },
   vera: {
-    ...FONTS.bold,
+    ...FONTS.calistoga,
     color: COLORS.veraColor,
   },
   subtitle: {
-    ...FONTS.regular,
-    fontSize: SIZES.sm,
+    ...FONTS.darkerGrotesqueMedium,
+    fontSize: SIZES.xl,
     textAlign: 'center',
     color: COLORS.black,
     lineHeight: 20,
-    marginBottom: SIZES.spacing_24,
-    maxWidth: SCREEN_WIDTH * 0.50,
+    marginBottom: SIZES.spacing_40,
+    maxWidth: SCREEN_WIDTH * 0.59,
   },
   button: {
     width: SCREEN_WIDTH * 0.55,
@@ -112,7 +120,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonText: {
-    ...FONTS.medium,
+    ...FONTS.regular,
     fontSize: SIZES.sm,
     color: COLORS.white,
   },

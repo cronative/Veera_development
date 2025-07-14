@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Redirect } from 'expo-router';
 import { useSessionContext } from '@supabase/auth-helpers-react';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
@@ -82,17 +82,17 @@ export default function Index() {
 
   // If not authenticated, redirect based on first launch status
   if (isFirstLaunch) {
-    console.log('[Navigation] Redirecting to signup - first launch', {
-      destination: '/signup',
+    console.log('[Navigation] Redirecting to get-started - first launch', {
+      destination: '/get-started',
       params: { firstLaunch: true }
     });
-    return <Redirect href="/signup" />;
+    return <Redirect href="/get-started" />;
   } else {
     console.log('[Navigation] Redirecting to login - returning user', {
       destination: '/login',
       params: { firstLaunch: false }
     });
-    return <Redirect href="/get-started" />;
+    return <Redirect href="/login" />;
   }
 }
 

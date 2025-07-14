@@ -11,11 +11,11 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   console.log('[App Initialization] Starting app launch - RootLayout');
-  
+
   useFrameworkReady();
 
   console.log('[App Initialization] System fonts ready, hiding splash screen');
-  
+
   useEffect(() => {
     // Hide splash screen immediately since we're using system fonts
     SplashScreen.hideAsync();
@@ -27,6 +27,7 @@ export default function RootLayout() {
     <SessionContextProvider supabaseClient={supabase}>
       <GestureHandlerRootView style={{ flex: 1 }}>
         <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="get-started" options={{ headerShown: false }} />
           <Stack.Screen name="index" options={{ headerShown: false }} />
           <Stack.Screen name="login" options={{ headerShown: false }} />
           <Stack.Screen name="signup" options={{ headerShown: false }} />

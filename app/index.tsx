@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Redirect } from 'expo-router';
 import { useSessionContext } from '@supabase/auth-helpers-react';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
@@ -9,15 +9,15 @@ const FIRST_LAUNCH_KEY = 'vera_first_launch';
 
 export default function Index() {
   console.log('[App Initialization] Index component starting');
-  
+
   const { session, isLoading } = useSessionContext();
   const [isFirstLaunch, setIsFirstLaunch] = useState<boolean | null>(null);
 
-  console.log('[Session State] Index component - current session:', { 
-    sessionExists: !!session, 
+  console.log('[Session State] Index component - current session:', {
+    sessionExists: !!session,
     sessionValue: session,
     sessionType: typeof session,
-    isLoading 
+    isLoading
   });
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export default function Index() {
     try {
       const hasLaunched = await AsyncStorage.getItem(FIRST_LAUNCH_KEY);
       console.log('[First Launch Check] AsyncStorage result:', hasLaunched);
-      
+
       if (hasLaunched === null) {
         // First launch - mark as launched and show sign up
         console.log('[First Launch Check] First launch detected, setting flag');
@@ -57,7 +57,7 @@ export default function Index() {
       isFirstLaunchNull: isFirstLaunch === null,
       screen: 'index'
     });
-    
+
     return (
       <View style={styles.loadingContainer}>
         <ActivityIndicator size="large" color={COLORS.pastelGreenDark} />
@@ -92,7 +92,7 @@ export default function Index() {
       destination: '/login',
       params: { firstLaunch: false }
     });
-    return <Redirect href="/login" />;
+    return <Redirect href="/get-started" />;
   }
 }
 

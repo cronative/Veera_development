@@ -1,10 +1,10 @@
 import { StyleSheet, Text, TouchableOpacity, ActivityIndicator, ViewStyle, TextStyle } from 'react-native';
 import { COLORS, FONTS, SIZES } from '@/constants/theme';
-import Animated, { 
-  useAnimatedStyle, 
-  useSharedValue, 
-  withSpring, 
-  withTiming 
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
+  withTiming
 } from 'react-native-reanimated';
 
 type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'text';
@@ -36,12 +36,12 @@ export default function Button({
   textStyle,
 }: ButtonProps) {
   const scale = useSharedValue(1);
-  
+
   const getButtonStyles = (): ViewStyle => {
     switch (variant) {
       case 'primary':
         return {
-          backgroundColor: disabled ? COLORS.textLight : COLORS.pastelGreenDark,
+          backgroundColor: disabled ? COLORS.textLight : COLORS.pastelBlueDark,
           borderWidth: 0,
         };
       case 'secondary':
@@ -63,7 +63,7 @@ export default function Button({
         };
     }
   };
-  
+
   const getTextStyles = (): TextStyle => {
     switch (variant) {
       case 'primary':
@@ -84,7 +84,7 @@ export default function Button({
         };
     }
   };
-  
+
   const getSizeStyles = (): ViewStyle => {
     switch (size) {
       case 'small':
@@ -107,7 +107,7 @@ export default function Button({
         };
     }
   };
-  
+
   const getTextSizeStyles = (): TextStyle => {
     switch (size) {
       case 'small':
@@ -124,21 +124,21 @@ export default function Button({
         };
     }
   };
-  
+
   const handlePressIn = () => {
     scale.value = withSpring(0.97, { damping: 10, stiffness: 200 });
   };
-  
+
   const handlePressOut = () => {
     scale.value = withSpring(1, { damping: 10, stiffness: 200 });
   };
-  
+
   const animatedStyle = useAnimatedStyle(() => {
     return {
       transform: [{ scale: scale.value }],
     };
   });
-  
+
   return (
     <AnimatedTouchable
       style={[
@@ -155,14 +155,14 @@ export default function Button({
       activeOpacity={0.8}
     >
       {loading ? (
-        <ActivityIndicator 
-          size="small" 
-          color={variant === 'primary' ? COLORS.white : COLORS.pastelGreenDark} 
+        <ActivityIndicator
+          size="small"
+          color={variant === 'primary' ? COLORS.white : COLORS.pastelGreenDark}
         />
       ) : (
         <>
           {icon && icon}
-          <Text 
+          <Text
             style={[
               styles.buttonText,
               getTextStyles(),

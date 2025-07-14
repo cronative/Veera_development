@@ -18,6 +18,7 @@ export const COLORS = {
   textLight: '#9E9E9E',
   
   // UI colors
+  black: '#000000',
   white: '#FFFFFF',
   background: '#FAFAFA',
   divider: '#E0E0E0',
@@ -28,6 +29,10 @@ export const COLORS = {
   // Overlay colors
   overlayLight: 'rgba(255, 255, 255, 0.7)',
   overlayDark: 'rgba(0, 0, 0, 0.1)',
+
+  // new colors
+  veraColor: '#ABA54B',
+  pastelBlueDark: '#233667'
 };
 
 export const SIZES = {
@@ -40,6 +45,7 @@ export const SIZES = {
   xl: 20,
   xxl: 24,
   xxxl: 32,
+  xxxxl: 34,
   
   // Spacing
   spacing_2: 2,
